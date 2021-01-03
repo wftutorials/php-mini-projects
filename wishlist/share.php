@@ -39,8 +39,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['send-message'])){
             $mail->isSMTP();
             $mail->Host       = 'smtp.mailtrap.io';
             $mail->SMTPAuth   = true;
-            $mail->Username   = '33486b9de38bf6';
-            $mail->Password   = 'c518b03b831dfb';
+            $mail->Username   = '';
+            $mail->Password   = '';
             $mail->Port       = 2525;
 
             //Recipients
