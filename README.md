@@ -41,3 +41,7 @@ Build a Code Snippet Manager to keep track of all your favorite code snippets.
 In this tutorial we work with highlight.js to view code on our website.
 We do CRUD operations to save and update our code snippets as well.
 Check it out here: https://youtu.be/G7-aNLuPkQ8
+
+# The tic tac toe Game (tictacto)
+Build a Tic tac toe game using only PHP.
+Check it out here: https://youtu.be/nlfZ6IegS9A
