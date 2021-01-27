@@ -45,3 +45,6 @@ Check it out here: https://youtu.be/G7-aNLuPkQ8
 # The tic tac toe Game (tictacto)
 Build a Tic tac toe game using only PHP.
 Check it out here: https://youtu.be/nlfZ6IegS9A
+
+# Building a TimeTable (timetable)
+Build a timetable using hardcode arrays and mysql database.
