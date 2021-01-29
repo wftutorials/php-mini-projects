@@ -48,3 +48,7 @@ Check it out here: https://youtu.be/nlfZ6IegS9A
 
 # Building a TimeTable (timetable)
 Build a timetable using hardcode arrays and mysql database.
+
+# Kanban Board with PHP
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/kanban
+
