@@ -186,8 +186,8 @@ function send_mail($subject, $body, $address){
     $mail->isSMTP();
     $mail->Host       = 'smtp.mailtrap.io';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'a344071f0c1f2c';
-    $mail->Password   = 'b34ad933404b10';
+    $mail->Username   = '';
+    $mail->Password   = '';
     $mail->Port       = 2525;
 
     //Recipients
