@@ -52,3 +52,7 @@ Build a timetable using hardcode arrays and mysql database.
 # Kanban Board with PHP
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/kanban
 
+# User Authentication and Login Workflows
+In this project we create login forms, registration forms, forget password forms.
+You can get and idea how to implement these principles in your project.
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/user-registration
