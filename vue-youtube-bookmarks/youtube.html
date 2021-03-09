@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Youtube App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <link rel="stylesheet" href="./assets/notifications.css">
+  <script src="./assets/notifications.js"></script>
+</head>
+
+<style>
+  .youtube-block{
+    width: 360px; height: 300px;
+    position: relative;
+    margin-left: 3px;
+    margin-bottom: 7px;
+    border: 1px solid grey;
+    display: inline-block;
+    padding: 5px;
+  }
+</style>
+<body>
+<div id="app">
+  <h3>Youtube App</h3>
+  <p v-if="editMessage">Editing a Video</p>
+  <input v-model="userUrl" type="text" placeholder="Add youtube link"/>
+  <button v-on:click="addUrl">Save link</button>
+  <button v-if="editMessage" v-on:click="cancelEdit">Cancel Edit</button>
+  <hr>
+  <div class="youtube-block"  v-for="url in urls">
+    <iframe width="355" height="245" :src="url.url" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    <span><a v-on:click="editLink(url)" href="#"><i class="fa fa-edit"></i>&nbsp;Edit</a></span> &nbsp; | &nbsp;
+    <span><a href="#" v-on:click="deleteLink(url.id)">Delete <i class="fa fa-trash"></i></a></span>
+  </div>
+
+</div>
+<script>
+
+  const mySuccessNotif = window.createNotification({
+    theme: 'success',
+  });
+  const myErrorNotif = window.createNotification({
+    theme: 'info',
+  });
+
+  var app = new Vue({
+    el: '#app',
+    created() {
+      this.getLinks();
+    },
+    data: {
+      userUrl: '',
+      baseUrl: '',
+      message: 'Hello Vue!',
+      urls : [],
+      tempUrls: [],
+      activeId: null,
+      activeLink: null,
+      editMessage: false,
+    },
+    methods : {
+      cancelEdit : function(){
+        this.activeId = null;
+        this.editMessage = false;
+      },
+      addUrl : function(){
+        let startUrl = this.userUrl;
+        //console.log(startUrl);
+        const url = new URL(startUrl)
+        const params = new URLSearchParams(url.search);
+        //console.log(url.search);
+        const name = params.get("v");
+        //console.log(name);
+        let ytUrl = 'https://www.youtube.com/embed/'+name;
+        this.tempUrls.push(ytUrl);
+        //this.urls.push()
+        if(this.activeId){
+          this.syncEdit();
+          this.activeId = null;
+          mySuccessNotif({
+            title: 'Success',
+            message: 'Edit completed'
+          });
+        }else{
+          this.syncChanges();
+          mySuccessNotif({
+            title: 'Success',
+            message: 'Saved youtube link'
+          });
+        }
+        this.userUrl = '';
+
+      },
+      removeBookmark: function(link){
+        //alert(link);
+        this.urls.splice(this.urls.indexOf(link),1);
+      },
+      syncEdit: function(){
+        let formdata = new FormData();
+        formdata.append('urls[]', this.tempUrls);
+        fetch('api.php?action=update-links&id='+this.activeId,{
+          method: 'POST',
+          body: formdata
+        }).then(res => res.json())
+          .then(data => {
+            this.tempUrls = [];
+            var lkObj = data.response.data[0];
+            console.log(lkObj);
+            this.urls.map((el) => {
+                if(el.id == lkObj.id){
+                  this.tempUrls.push({
+                    id: el.id,
+                    url: lkObj.url
+                  })
+                }else{
+                  this.tempUrls.push({
+                    id: el.id,
+                    url: el.url
+                  })
+                }
+            });
+            this.urls = this.tempUrls;
+            this.tempUrls = [];
+            this.editMessage = false;
+          })
+      },
+      syncChanges: function(){
+        let formdata = new FormData();
+        formdata.append('urls[]', this.tempUrls);
+        fetch('api.php?action=sync-links',{
+          method: 'POST',
+          body: formdata
+        }).then(res => res.json())
+        .then(data => {
+          data.response.data.map((el)=>{
+            this.urls.push({
+              id: el.id,
+              url: el.url
+            })
+          })
+          console.log(this.urls);
+          this.tempUrls = [];
+        })
+      },
+      getLinks:function(){
+        fetch('api.php?action=get-links')
+          .then(res=> res.json())
+          .then(data => { this.urls = data.response.data})
+      },
+      deleteLink: function(id){
+        if(confirm("Are you sure you want to delete")){
+          this.urls.map((el) => {
+            if(el.id != id){
+              this.tempUrls.push({
+                id: el.id,
+                url: el.url
+              })
+            }
+          });
+          this.urls = this.tempUrls;
+          this.tempUrls = [];
+          this.sendDeleteRequest(id);
+        }
+      },
+      editLink : function(obj){
+        this.editMessage = true;
+        this.activeId = obj.id;
+        myErrorNotif({
+          title: 'Editing',
+          message: 'Editing the video',
+          displayCloseButton: true,
+        });
+      },
+      sendDeleteRequest : function(id){
+        fetch('api.php?action=delete-links&id='+id,{
+          method: 'POST',
+        }).then((res)=>{
+          mySuccessNotif({message:"Message deleted from server"})
+        })
+      }
+    }
+  })
+</script>
+</body>
+</html>
