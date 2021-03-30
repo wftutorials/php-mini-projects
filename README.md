@@ -61,3 +61,8 @@ Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/u
 # Vue PHP Backend Youtube Bookmarks App
 Build an app that stores youtube links and displays them in and embedded frame.
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/vue-youtube-bookmarks
+
+# Events and Vue Project
+We build a simple events manager. Really were are trying to see if we can replace jquery using bootstrap and
+vue.js.
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/events-with-vue
