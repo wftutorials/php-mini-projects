@@ -66,3 +66,7 @@ Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/v
 We build a simple events manager. Really were are trying to see if we can replace jquery using bootstrap and
 vue.js.
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/events-with-vue
+
+# PDF PHP Creator
+A simple project to create PDF files easily.
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/php-pdf-creator
