@@ -70,3 +70,7 @@ Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/e
 # PDF PHP Creator
 A simple project to create PDF files easily.
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/php-pdf-creator
+
+# Backup Manager
+A simple backup manager. Zip your files on command
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/backup-manager
