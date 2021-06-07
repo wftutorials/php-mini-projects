@@ -78,3 +78,7 @@ Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/b
 # Simple File manager
 A  Simple file manager built with PHP.
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/simple-file-manager
+
+# A simple task runner
+Offload your time intensive tasks to a task runner to execute via CLI.
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/simple-task-runner
