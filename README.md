@@ -74,3 +74,7 @@ Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/p
 # Backup Manager
 A simple backup manager. Zip your files on command
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/backup-manager
+
+# Simple File manager
+A  Simple file manager built with PHP.
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/simple-file-manager
