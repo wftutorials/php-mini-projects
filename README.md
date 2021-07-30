@@ -82,3 +82,7 @@ Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/s
 # A simple task runner
 Offload your time intensive tasks to a task runner to execute via CLI.
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/simple-task-runner
+
+# Simple Flat File Queue using PHP Arrays (FIFO and LIFO)
+Using this to create a little queue without using a database.
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/fifo-queue
