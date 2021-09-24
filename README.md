@@ -86,3 +86,7 @@ Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/s
 # Simple Flat File Queue using PHP Arrays (FIFO and LIFO)
 Using this to create a little queue without using a database.
 Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/fifo-queue
+
+# Hangman the game
+Build a simple hangman game with php
+Check it out here - https://github.com/wftutorials/php-mini-projects/tree/main/hangman
